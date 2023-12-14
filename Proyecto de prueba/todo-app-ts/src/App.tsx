@@ -20,7 +20,7 @@ const mockToDos = [
 ]
 
 const App = (): JSX.Element => {
-  const [todos, setTodos] = useState(mockToDos)
+  const [todos] = useState(mockToDos)
   return (
     <Todos todos={todos}/>
   )
