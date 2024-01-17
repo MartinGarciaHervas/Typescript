@@ -1,5 +1,5 @@
 "use strict";
 const button = document.querySelector('button');
-button.addEventListener('click', () => {
+button === null || button === void 0 ? void 0 : button.addEventListener('click', () => {
     console.log('clicked!');
 });
