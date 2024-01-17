@@ -1,27 +1,8 @@
-function add(n1: number, n2: number) {
-    return n1 + n2;
-}
+let userInput: unknown; //te deja poner cualquier tipo, pero igualmente es distinto al type any.
 
-function printResult(num: number) {
-    console.log('Result: ' + num);
-}
+let userName: string;
 
-//Esta function tiene como tipo de resultado a VOID, esto es porque no retorna nada.
+userInput = 5;
+userInput = 'Max'
 
-function addAndHandle(n1: number, n2: number, cb: (a: number) => void) {
-    const result = n1 + n2
-    cb(result)
-}
-
-printResult(add(5, 12))
-
-let combinedValues: (a: number, b: number) => number;
-
-combinedValues = add;
-
-console.log(combinedValues(8, 8));
-
-addAndHandle(10, 20, (a) => {
-    console.log(a);
-
-})
+// userName = userInput //aca se ve, que unknown es distinto a any, porque esto da error, en cambio con any no. Por eso es unknown es mejor que any.
