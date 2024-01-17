@@ -9,3 +9,9 @@ function printResult(num: number){
 //Esta function tiene como tipo de resultado a VOID, esto es porque no retorna nada.
 
 printResult(add(5, 12))
+
+let combinedValues: (a: number, b:number)=>number;
+
+combinedValues = add;
+
+console.log(combinedValues(8, 8));
