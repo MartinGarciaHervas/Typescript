@@ -60,7 +60,7 @@
     // "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */
     // "inlineSourceMap": true,                          /* Include sourcemap files inside the emitted JavaScript. */
     // "outFile": "./",                                  /* Specify a file that bundles all outputs into one JavaScript file. If 'declaration' is true, also designates a file that bundles all .d.ts output. */
-    // "outDir": "./",                                   /* Specify an output folder for all emitted files. */
+    "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
     // "removeComments": true,                           /* Disable emitting comments. */
     // "noEmit": true,                                   /* Disable emitting files from a compilation. */
     // "importHelpers": true,                            /* Allow importing helper functions from tslib once per project, instead of including them per-file. */
@@ -114,9 +114,9 @@
   "exclude": [ // esto excluye los archivos o carpetas que le digamos al momento de compilar, tambien los tipos de archivos
     "**/*.dev.ts",
     "node_modules",
-    "Basics Types"
+    "src/Basics Types"
   ],
   "include": [ //al contrario de exclude, en include, se le indica los archivos que queremos compilar, mientras que los que no estan aca, se excluiran
     "*"
-  ]
+, "src/analytics.ts", "src/app.ts", "src/Basics Types"  ]
 }
