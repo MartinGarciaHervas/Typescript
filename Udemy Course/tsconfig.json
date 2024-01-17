@@ -105,5 +105,13 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+  },
+  "exclude": [ // esto excluye los archivos o carpetas que le digamos al momento de compilar, tambien los tipos de archivos
+    "**/*.dev.ts",
+    "node_modules",
+    "Basics Types"
+  ],
+  "include": [ //al contrario de exclude, en include, se le indica los archivos que queremos compilar, mientras que los que no estan aca, se excluiran
+    "*"
+  ]
 }
