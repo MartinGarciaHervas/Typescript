@@ -31,8 +31,18 @@ class ITDepartment extends Department { //Al hacer esto, la clase ITDepartment a
 }
 
 class AccountingDepartment extends Department {
+    private lastReport: string; //En este caso al ser privada, y no tener ningun metodo que imprima este report, podemos crear lo que se llama un GETTER
+
+    get mostRecentReport(){ //Ahora con este getter, podemos mostrar un propiedad que tiene como modifier PRIVATE. 
+        if(this.lastReport){
+            return this.lastReport
+        }
+        return 'No report found.'
+    }
+
     constructor(id: string, private reports: string[]){
-        super(id, 'Accounting')
+        super(id, 'Accounting');
+        this.lastReport = reports[0]
     }
 
     addEmployee(employee: string) { //podemos sobreescribir los metodos si queremos
@@ -44,6 +54,7 @@ class AccountingDepartment extends Department {
 
     addReport(text: string){
         this.reports.push(text)
+        this.lastReport = text
     }
 
     printReports(){
@@ -64,6 +75,9 @@ accounting.printEmployeeInformation();
 
 
 accounting.addReport('Todo perfe pa');
+accounting.addReport('Todo sigue perfe pa');
+console.log(accounting.mostRecentReport); //si queremos acceder a lastReport directamente no va a aparecer porque es private. En cambio llamamos al getter que creamos, SIN ejecutarlo, y este va a mostrarnos lo que le pedimos
+
 accounting.printReports()
 
 const it = new ITDepartment('I1', ['Ricky'])
