@@ -118,5 +118,5 @@
   ],
   "include": [ //al contrario de exclude, en include, se le indica los archivos que queremos compilar, mientras que los que no estan aca, se excluiran
     "*"
-, "src/analytics.ts", "src/app.ts", "src/Basics Types"  ]
+, "src/app.ts", "src/Basics Types"  ]
 }
