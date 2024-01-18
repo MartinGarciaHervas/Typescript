@@ -1,4 +1,4 @@
-abstract class Department {
+abstract class Department {  //* Ahora que la hicimos abstract a esta clase, no se puede crear una instancia (objeto) de ella, solo se puede extender
     // private name: string; //Aca se ponen las keys que queres que tengan los objetos de estas clases
     protected employees: string[] = [] //al agregarle el private(solo en TS), esto obliga a los developers a usar los metodos que alteran a esta property, y no permitiendoles cambiarla de cuaoquier manera. asi te aseguras de que si o si pasen por el codigo que esta en el metodo. //* PRIVATE se puede usar tambien en metodos.
 
