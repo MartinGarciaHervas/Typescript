@@ -5,9 +5,6 @@ class Department {
         this.name = name;
         this.employees = [];
     }
-    describe() {
-        console.log(`Department (${this.id}): ${this.name}`);
-    }
     addEmployee(employee) {
         this.employees.push(employee);
     }
@@ -19,6 +16,9 @@ class ITDepartment extends Department {
     constructor(id, admins) {
         super(id, 'IT');
         this.admins = admins;
+    }
+    describe() {
+        console.log('IT Department - ID: ' + this.id);
     }
     printAdmins() {
         console.log('Admins', this.admins);
@@ -41,6 +41,9 @@ class AccountingDepartment extends Department {
         super(id, 'Accounting');
         this.reports = reports;
         this.lastReport = reports[0];
+    }
+    describe() {
+        console.log('Accounting Department - ID: ' + this.id);
     }
     addEmployee(employee) {
         if (employee === 'Martin') {
