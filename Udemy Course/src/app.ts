@@ -20,6 +20,12 @@ class Department {
     }
 }
 
+class ITDepartment extends Department { //Al hacer esto, la clase ITDepartment ahora tiene todo lo que la clase Department tiene, y de esta manera, podemos agregarle cosas sin modificar a Department. si le agregamos un constructor, este va a reemplazar al de Department, asi que OJO
+    constructor(id: string, public admins: string[]){
+        super(id, 'IT'); //super es una funcion reservada que llama al constructor original (en este caso el de department). hay que llamarlo siempre que se cree otro constructor. Es lo PRIMERO que tiene que llamarse en el nuevo contructor.
+    }
+}
+
 const accounting = new Department('A1', 'Accounting');
 
 accounting.describe();
@@ -30,3 +36,10 @@ accounting.addEmployee('Roberto');
 // accounting.employee[2] = 'Anna' //* ahora esto da error porque employee esta en privado.
 
 accounting.printEmployeeInformation();
+
+const it = new ITDepartment('I1', ['Ricky'])
+
+console.log(it);
+
+it.addEmployee('Pepito');
+it.describe()
