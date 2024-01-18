@@ -15,7 +15,6 @@ class Department {
     }
 
     printEmployeeInformation(){
-        console.log(this.employees.length);
         console.log(this.employees);
     }
 }
@@ -24,9 +23,29 @@ class ITDepartment extends Department { //Al hacer esto, la clase ITDepartment a
     constructor(id: string, public admins: string[]){
         super(id, 'IT'); //super es una funcion reservada que llama al constructor original (en este caso el de department). hay que llamarlo siempre que se cree otro constructor. Es lo PRIMERO que tiene que llamarse en el nuevo contructor.
     }
+
+    printAdmins(){
+        console.log(this.admins);
+        
+    }
 }
 
-const accounting = new Department('A1', 'Accounting');
+class AccountingDepartment extends Department {
+    constructor(id: string, private reports: string[]){
+        super(id, 'Accounting')
+    }
+
+    addReport(text: string){
+        this.reports.push(text)
+    }
+
+    printReports(){
+        console.log(this.reports);
+        
+    }
+}
+
+const accounting = new AccountingDepartment('A1', []);
 
 accounting.describe();
 
@@ -37,9 +56,11 @@ accounting.addEmployee('Roberto');
 
 accounting.printEmployeeInformation();
 
-const it = new ITDepartment('I1', ['Ricky'])
+accounting.addReport('Todo perfe pa');
+accounting.printReports()
 
-console.log(it);
+const it = new ITDepartment('I1', ['Ricky'])
 
 it.addEmployee('Pepito');
 it.describe()
+it.printAdmins()
