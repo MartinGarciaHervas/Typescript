@@ -31,6 +31,12 @@ class AccountingDepartment extends Department {
         }
         return 'No report found.';
     }
+    set mostRecentReport(value) {
+        if (!value) {
+            throw new Error('Please add a valid value!');
+        }
+        this.addReport(value);
+    }
     constructor(id, reports) {
         super(id, 'Accounting');
         this.reports = reports;
@@ -57,6 +63,8 @@ accounting.addEmployee('Roberto');
 accounting.printEmployeeInformation();
 accounting.addReport('Todo perfe pa');
 accounting.addReport('Todo sigue perfe pa');
+console.log(accounting.mostRecentReport);
+accounting.mostRecentReport = 'Se fue todo a la goma';
 console.log(accounting.mostRecentReport);
 accounting.printReports();
 const it = new ITDepartment('I1', ['Ricky']);

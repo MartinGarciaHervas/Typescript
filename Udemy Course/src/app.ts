@@ -40,6 +40,13 @@ class AccountingDepartment extends Department {
         return 'No report found.'
     }
 
+    set mostRecentReport(value: string){ //esto es como un metodo para cambiar esta variable, es parecido. fijate que llamo a otro metodo existente, para justamente setear, en este caso, el lastReport.
+        if(!value){
+            throw new Error('Please add a valid value!')
+        }
+        this.addReport(value)
+    }
+
     constructor(id: string, private reports: string[]){
         super(id, 'Accounting');
         this.lastReport = reports[0]
@@ -77,6 +84,9 @@ accounting.printEmployeeInformation();
 accounting.addReport('Todo perfe pa');
 accounting.addReport('Todo sigue perfe pa');
 console.log(accounting.mostRecentReport); //si queremos acceder a lastReport directamente no va a aparecer porque es private. En cambio llamamos al getter que creamos, SIN ejecutarlo, y este va a mostrarnos lo que le pedimos
+accounting.mostRecentReport = 'Se fue todo a la goma' //por mas que el nombre sea el mismo, aca estoy accediendo al setter, y no al getter. Esto se debe que le puse el =, y despues del igual va el parametro.
+console.log(accounting.mostRecentReport);
+
 
 accounting.printReports()
 
