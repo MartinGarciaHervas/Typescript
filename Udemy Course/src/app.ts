@@ -18,7 +18,7 @@ class Person implements Greetable{ //Las interfaces se pueden implementar en cla
 
 }
 
-let user1: Greetable;
+let user1: Greetable; //Aca podemos decir que user1 es de tipo Greetable, porque sabemos que la clase Person implementa a la interface greetable.
 
 user1 = new Person('Martin')
 
