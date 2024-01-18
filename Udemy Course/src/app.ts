@@ -25,7 +25,7 @@ class ITDepartment extends Department { //Al hacer esto, la clase ITDepartment a
     }
 
     printAdmins(){
-        console.log(this.admins);
+        console.log('Admins', this.admins);
         
     }
 }
@@ -36,7 +36,7 @@ class AccountingDepartment extends Department {
     }
 
     addEmployee(employee: string) { //podemos sobreescribir los metodos si queremos
-        if(employee === 'Max'){
+        if(employee === 'Martin'){
             return;
         }
         this.employees.push(employee) //en este caso, al ser employee PRIVATE, tampoco va a estar disponible para las clases que heredan a Department, es por eso que en vez de private, podemos usar PROTECTED. basicamente es igual, solo que permite que las clases que heredan, tambien tengan acceso a esa propiedad
@@ -47,7 +47,7 @@ class AccountingDepartment extends Department {
     }
 
     printReports(){
-        console.log(this.reports);
+        console.log('Reports', this.reports);
         
     }
 }
@@ -56,18 +56,20 @@ const accounting = new AccountingDepartment('A1', []);
 
 accounting.describe();
 
-accounting.addEmployee('Martin');
+accounting.addEmployee('Martin'); //esto no va a funcionar, porque sobreescribimos el metodo addEmployee y no permitimos agregar a martin.
 accounting.addEmployee('Roberto');
+accounting.printEmployeeInformation();
 
 // accounting.employee[2] = 'Anna' //* ahora esto da error porque employee esta en privado.
 
-accounting.printEmployeeInformation();
 
 accounting.addReport('Todo perfe pa');
 accounting.printReports()
 
 const it = new ITDepartment('I1', ['Ricky'])
 
-it.addEmployee('Pepito');
 it.describe()
+
+it.addEmployee('Martin'); //aca si va a funcionar porque usamos el metodo original.
+it.printEmployeeInformation()
 it.printAdmins()

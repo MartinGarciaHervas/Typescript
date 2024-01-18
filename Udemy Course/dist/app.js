@@ -21,7 +21,7 @@ class ITDepartment extends Department {
         this.admins = admins;
     }
     printAdmins() {
-        console.log(this.admins);
+        console.log('Admins', this.admins);
     }
 }
 class AccountingDepartment extends Department {
@@ -30,7 +30,7 @@ class AccountingDepartment extends Department {
         this.reports = reports;
     }
     addEmployee(employee) {
-        if (employee === 'Max') {
+        if (employee === 'Martin') {
             return;
         }
         this.employees.push(employee);
@@ -39,7 +39,7 @@ class AccountingDepartment extends Department {
         this.reports.push(text);
     }
     printReports() {
-        console.log(this.reports);
+        console.log('Reports', this.reports);
     }
 }
 const accounting = new AccountingDepartment('A1', []);
@@ -50,6 +50,7 @@ accounting.printEmployeeInformation();
 accounting.addReport('Todo perfe pa');
 accounting.printReports();
 const it = new ITDepartment('I1', ['Ricky']);
-it.addEmployee('Pepito');
 it.describe();
+it.addEmployee('Martin');
+it.printEmployeeInformation();
 it.printAdmins();
