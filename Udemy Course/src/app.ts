@@ -78,3 +78,30 @@ function useVehicle(vehicle: Vehicle){
 
 useVehicle(v1)
 useVehicle(v2)
+
+interface Bird {
+    species: 'bird' //aca se le asigna un literal type a species. es decir que en este caso, species tiene que ser 'bird' si o si.
+    flyingSpeed: number
+}
+
+interface Horse {
+    species: 'horse'
+    runningSpeed: number
+}
+
+type Animal = Bird | Horse;
+
+function moveAnimal(animal: Animal){
+    let speed;
+    switch (animal.species){ //ahora con esto podemos usar un switch para las species, a esto se le llama Discriminating Unions.
+        case 'bird': //TS ya sabe que sepceis tenemos, entonces es facil
+            speed = animal.flyingSpeed;
+            break;
+        case 'horse':
+            speed = animal.runningSpeed;
+            break;
+    }
+    console.log('Moving at speed: ' + speed);
+}
+
+moveAnimal({species: 'bird', flyingSpeed:1000})
