@@ -106,8 +106,19 @@ function moveAnimal(animal: Animal){
 
 moveAnimal({species: 'bird', flyingSpeed:1000})
 
-// const userInputElement = <HTMLInputElement>document.getElementById('user')!; //Tenemos que indicarle el tipo de HTMLElement que estamos tomando, porque TS no sabe cual es, y no se puede meterse a chsumear, entonces de esta manera le indicamos que es un input
+// const userInputElement = <HTMLInputElement>document.getElementById('user')!; //Tenemos que indicarle el tipo de HTMLElement que estamos tomando, porque TS no sabe cual es, y no se puede meterse a chsumear, entonces de esta manera le indicamos que es un input. tambien ponemos un ! para indicarle a typescript que este valor nunca va a ser Null.
 
 const userInputElement = document.getElementById('user')! as HTMLInputElement; //Esta es otra manera que al parecer esta buena cuando trabajas con react, porque la otra connotacion choca con algo de react.
 
 userInputElement.value = 'Hi There!';
+
+
+
+interface ErrorContainer {
+    [key: string]: string; //Lo que hacemos aca es declarar un index Type. Esto lo que nos permite es indicar que no sabemos con exactitud que propiedades ni cuantas de ellas van a estar en ErrorContainer, pero si sabemos que su key va a ser un string, y su value tambien. De esta manera es super flexible.
+}
+
+const errorBag: ErrorContainer = {
+    email: 'Not a valid email',
+    userName: 'Must start with a character!'
+}
