@@ -1,6 +1,8 @@
-interface Greetable { // Se diferencia de un custon type en que: a) solo se pueden determinar estructuras de objetos, Esto hace que sea mas claro que lo que estas definiendo es la estructura de un objeto y no cualquier otra cosa. b) 
-    readonly name: string; //con el readonly hacemos que esta propiedad solo se pueda nombrar al inicializarse el objeto. 
+interface Named {
+    readonly name: string
+}
 
+interface Greetable extends Named { // Se diferencia de un custon type en que: a) solo se pueden determinar estructuras de objetos, Esto hace que sea mas claro que lo que estas definiendo es la estructura de un objeto y no cualquier otra cosa. b) 
     greet(phrase: string): void;
 }
 
