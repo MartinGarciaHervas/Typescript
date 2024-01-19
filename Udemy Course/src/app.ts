@@ -105,3 +105,9 @@ function moveAnimal(animal: Animal){
 }
 
 moveAnimal({species: 'bird', flyingSpeed:1000})
+
+// const userInputElement = <HTMLInputElement>document.getElementById('user')!; //Tenemos que indicarle el tipo de HTMLElement que estamos tomando, porque TS no sabe cual es, y no se puede meterse a chsumear, entonces de esta manera le indicamos que es un input
+
+const userInputElement = document.getElementById('user')! as HTMLInputElement; //Esta es otra manera que al parecer esta buena cuando trabajas con react, porque la otra connotacion choca con algo de react.
+
+userInputElement.value = 'Hi There!';
