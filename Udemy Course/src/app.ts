@@ -8,14 +8,23 @@ type Universal = Combinable & Numeric;
 function add(a: number, b: number): number; //a esto se lo llama function overload. lo que hacemos e decir a la funcion add, que si me dan dos paramentros number, es seguro que el resultado va a ser un number, o viceversa con el string
 function add(a: string, b: string): string;
 function add(a: Combinable, b: Combinable) {
-    if (typeof a === 'string' || typeof b === 'string'){ //Esto que hacemos aca se lo llama type guard, porque te asegura el type del resultado, en este caso string o number, y no un resultado que puede ser ambos.
+    if (typeof a === 'string' || typeof b === 'string') { //Esto que hacemos aca se lo llama type guard, porque te asegura el type del resultado, en este caso string o number, y no un resultado que puede ser ambos.
         return a.toString() + b.toString()
     }
     return a + b
 }
 
-const result = add('Martin',' Garcia')
+const result = add('Martin', ' Garcia')
 result.split(' ') // gracias a la function overload de arriba, Typescript sabe que el resultado va a ser un string, por lo que nos deja hacer uso del metodo split.
+
+
+const fetchedUserData = {
+    id: 'u1',
+    name: 'Martin',
+    job: { title: 'CEO', description: 'My own company' }
+}
+
+console.log(fetchedUserData?.job?.title); //igual que en js esto es el optional chaining, chequea que exista antes de meterse mas.
 
 
 
@@ -39,19 +48,19 @@ const e1: ElevatedEmployee = { //tiene que tener las props de Admin y Employee.
 
 type UnknownEmployee = Employee | Admin;
 
-function printEmployeeInformation(emp: UnknownEmployee){
-console.log('Name: ' + emp.name);
-if('privileges' in emp){ // En este otro tipo de Type Guard, en el cual no podemos usar el chequeo de typeof, dado que va a dar object y eso no nos cambia, Lo que usamos es 'in'. lo que permite esto es chequear si en el objeto emp existe la propiedad privileges en este caso.
-    console.log('Privileges: ' + emp.privileges);
-}
-if ('startDate' in emp){
-    console.log('Start Date: ' + emp.startDate);
-}
+function printEmployeeInformation(emp: UnknownEmployee) {
+    console.log('Name: ' + emp.name);
+    if ('privileges' in emp) { // En este otro tipo de Type Guard, en el cual no podemos usar el chequeo de typeof, dado que va a dar object y eso no nos cambia, Lo que usamos es 'in'. lo que permite esto es chequear si en el objeto emp existe la propiedad privileges en este caso.
+        console.log('Privileges: ' + emp.privileges);
+    }
+    if ('startDate' in emp) {
+        console.log('Start Date: ' + emp.startDate);
+    }
 }
 
 printEmployeeInformation(e1)
-printEmployeeInformation({name: 'Pepe', startDate: new Date()})
-printEmployeeInformation({name: 'Max', privileges: ['Parking']})
+printEmployeeInformation({ name: 'Pepe', startDate: new Date() })
+printEmployeeInformation({ name: 'Max', privileges: ['Parking'] })
 
 
 
@@ -62,13 +71,13 @@ class Car {
 }
 
 class Truck {
-    drive(){
-        console.log('Driving a truck...');   
+    drive() {
+        console.log('Driving a truck...');
     }
 
-    loadCargo(amount: number){
+    loadCargo(amount: number) {
         console.log('Loading cargo ... ' + amount);
-        
+
     }
 }
 
@@ -77,9 +86,9 @@ type Vehicle = Car | Truck;
 const v1 = new Car();
 const v2 = new Truck();
 
-function useVehicle(vehicle: Vehicle){
+function useVehicle(vehicle: Vehicle) {
     vehicle.drive();
-    if(vehicle instanceof Truck){ //En este caso usamos instanceof, que busca que vehicle sea una instancia de Truck y no de Car, en ese caso sabemos que la propiedad loadCargo existe. Esto lo usamos en clases.
+    if (vehicle instanceof Truck) { //En este caso usamos instanceof, que busca que vehicle sea una instancia de Truck y no de Car, en ese caso sabemos que la propiedad loadCargo existe. Esto lo usamos en clases.
         vehicle.loadCargo(1000)
     }
 }
@@ -99,9 +108,9 @@ interface Horse {
 
 type Animal = Bird | Horse;
 
-function moveAnimal(animal: Animal){
+function moveAnimal(animal: Animal) {
     let speed;
-    switch (animal.species){ //ahora con esto podemos usar un switch para las species, a esto se le llama Discriminating Unions.
+    switch (animal.species) { //ahora con esto podemos usar un switch para las species, a esto se le llama Discriminating Unions.
         case 'bird': //TS ya sabe que sepceis tenemos, entonces es facil
             speed = animal.flyingSpeed;
             break;
@@ -112,7 +121,7 @@ function moveAnimal(animal: Animal){
     console.log('Moving at speed: ' + speed);
 }
 
-moveAnimal({species: 'bird', flyingSpeed:1000})
+moveAnimal({ species: 'bird', flyingSpeed: 1000 })
 
 // const userInputElement = <HTMLInputElement>document.getElementById('user')!; //Tenemos que indicarle el tipo de HTMLElement que estamos tomando, porque TS no sabe cual es, y no se puede meterse a chsumear, entonces de esta manera le indicamos que es un input. tambien ponemos un ! para indicarle a typescript que este valor nunca va a ser Null.
 
