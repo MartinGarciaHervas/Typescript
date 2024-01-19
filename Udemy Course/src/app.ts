@@ -26,3 +26,7 @@ user1 = new Person('Martin')
 // user1.name = 'Pepe' //*Esto va a dar error por el readonly que declaramos en la interface
 
 user1.greet('Hi there!, I am')
+
+interface addFn { //de esta manera se puede declarar una interface como function type. Igual es mejor usar type para esto.
+    (a: number, b: number): number;
+}
