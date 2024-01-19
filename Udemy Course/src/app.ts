@@ -1,5 +1,6 @@
 interface Named { // Se diferencia de un custon type en que: a) solo se pueden determinar estructuras de objetos, Esto hace que sea mas claro que lo que estas definiendo es la estructura de un objeto y no cualquier otra cosa.
     readonly name: string
+    outputName?: string //Esto lo que hace es decir a typescript que esta propiedad no es Obligatoria. Fijate que no esta en la calse Person y no hay problema. Si se le pone ? en la interface, tambien se le tiene que poner en la class.
 }
 
 interface Greetable extends Named { //las interfaces tambien se pueden extender, esto quiere decir que ahora greetable, a parte de tener su contenido, tiene el de Named. 
