@@ -1,3 +1,24 @@
+type Combinable = string | number;
+
+type Numeric = number | boolean;
+
+type Universal = Combinable & Numeric;
+
+
+function add(a: number, b: number): number; //a esto se lo llama function overload. lo que hacemos e decir a la funcion add, que si me dan dos paramentros number, es seguro que el resultado va a ser un number, o viceversa con el string
+function add(a: string, b: string): string;
+function add(a: Combinable, b: Combinable) {
+    if (typeof a === 'string' || typeof b === 'string'){ //Esto que hacemos aca se lo llama type guard, porque te asegura el type del resultado, en este caso string o number, y no un resultado que puede ser ambos.
+        return a.toString() + b.toString()
+    }
+    return a + b
+}
+
+const result = add('Martin',' Garcia')
+result.split(' ') // gracias a la function overload de arriba, Typescript sabe que el resultado va a ser un string, por lo que nos deja hacer uso del metodo split.
+
+
+
 type Admin = {
     name: string;
     privileges: string[];
@@ -14,19 +35,6 @@ const e1: ElevatedEmployee = { //tiene que tener las props de Admin y Employee.
     name: 'Martin',
     privileges: ['Free Food'],
     startDate: new Date()
-}
-
-type Combinable = string | number;
-
-type Numeric = number | boolean;
-
-type Universal = Combinable & Numeric;
-
-function add(a: Combinable, b: Combinable) {
-    if (typeof a === 'string' || typeof b === 'string'){ //Esto que hacemos aca se lo llama type guard, porque te asegura el type del resultado, en este caso string o number, y no un resultado que puede ser ambos.
-        return a.toString() + b.toString()
-    }
-    return a + b
 }
 
 type UnknownEmployee = Employee | Admin;
@@ -122,3 +130,5 @@ const errorBag: ErrorContainer = {
     email: 'Not a valid email',
     userName: 'Must start with a character!'
 }
+
+

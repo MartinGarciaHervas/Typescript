@@ -1,15 +1,17 @@
 "use strict";
-const e1 = {
-    name: 'Martin',
-    privileges: ['Free Food'],
-    startDate: new Date()
-};
 function add(a, b) {
     if (typeof a === 'string' || typeof b === 'string') {
         return a.toString() + b.toString();
     }
     return a + b;
 }
+const result = add('Martin', ' Garcia');
+result.split(' ');
+const e1 = {
+    name: 'Martin',
+    privileges: ['Free Food'],
+    startDate: new Date()
+};
 function printEmployeeInformation(emp) {
     console.log('Name: ' + emp.name);
     if ('privileges' in emp) {
