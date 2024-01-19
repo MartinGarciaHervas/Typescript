@@ -29,8 +29,9 @@ console.log(fetchedUserData?.job?.title); //igual que en js esto es el optional 
 
 const userInput = null;
 
-const storedDarta = userInput ?? 'DEFAULT'; //aca lo que hace el doble ?, es preguntarse si es estrictamente null o undefined, si es '', va a quedar como '', si es 0 va a quedar como 0.
+const storedData = userInput ?? 'DEFAULT'; //aca lo que hace el doble ?, es preguntarse si es estrictamente null o undefined, si es '', va a quedar como '', si es 0 va a quedar como 0.
 
+console.log(storedData);
 
 
 type Admin = {
