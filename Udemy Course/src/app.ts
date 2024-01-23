@@ -9,7 +9,20 @@ function Logger(logString: string){ //haciendolo de esta manera podemos agregarl
     console.log(constructor);
 }}
 
-@Logger('LOGING - PERSON') //con esto se le indica que se ejecuta el decorator
+function WithTemplate(template: string, hookId: string){
+    return function(constructor: any){
+        const hookElement = document.getElementById(hookId)
+        const p = new constructor()
+        if(hookElement){
+            hookElement.innerHTML = template
+            hookElement.querySelector('h1')!.textContent = p.name
+        }
+    }
+}
+
+
+// @Logger('LOGING - PERSON') //con esto se le indica que se ejecuta el decorator
+@WithTemplate('<h1>My Person Object</h1>', 'app')
 class Person {
     name = 'Max';
 
