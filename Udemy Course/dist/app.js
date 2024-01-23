@@ -25,3 +25,7 @@ function countAndDescribe(element) {
 }
 console.log(countAndDescribe('Hi there!'));
 console.log(countAndDescribe(['hola', 'Cra']));
+function extractAndConvert(obj, key) {
+    return `${String(key)}: ${obj[key]}`;
+}
+console.log(extractAndConvert({ name: 'Juan', age: 30 }, 'name'));

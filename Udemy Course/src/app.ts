@@ -47,3 +47,9 @@ console.log(countAndDescribe(['hola', 'Cra']));
 // console.log(countAndDescribe(30)); //* Esto no va a funcionar porque no se le puede hacer length a number.
 
 
+function extractAndConvert<T extends Object, U extends keyof T>(obj: T, key: U){ // La constraint keyof indica que, en este caso, el type U tiene que ser una key del objeto T.
+    return `${String(key)}: ${obj[key]}`
+}
+
+console.log(extractAndConvert({name: 'Juan', age: 30}, 'name'));
+
