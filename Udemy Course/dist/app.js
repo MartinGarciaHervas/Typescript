@@ -29,3 +29,19 @@ function extractAndConvert(obj, key) {
     return `${String(key)}: ${obj[key]}`;
 }
 console.log(extractAndConvert({ name: 'Juan', age: 30 }, 'name'));
+class DataStorage {
+    constructor() {
+        this.data = [];
+    }
+    addItem(item) {
+        this.data.push(item);
+    }
+    removeItem(item) {
+        this.data.slice(this.data.indexOf(item), 1);
+    }
+    getItems() {
+        return [...this.data];
+    }
+}
+const textStorage = new DataStorage();
+textStorage.addItem('Martin');

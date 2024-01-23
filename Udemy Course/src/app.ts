@@ -53,3 +53,27 @@ function extractAndConvert<T extends Object, U extends keyof T>(obj: T, key: U){
 
 console.log(extractAndConvert({name: 'Juan', age: 30}, 'name'));
 
+
+
+//* Generic Classes
+
+class DataStorage <T extends string | number | boolean> { //Esta clase ahora permite un array de cualquier type, lo cual la hace super dinamica.
+    private data:T[] = [];
+
+    addItem(item:T){
+        this.data.push(item)
+    }
+
+    removeItem(item:T){
+        this.data.slice(this.data.indexOf(item), 1)
+    }
+
+    getItems(){
+        return [...this.data]
+    }
+}
+
+const textStorage = new DataStorage<string>(); // Al ser la clase dinamica, nosotros podemos crear una instancia, e indicarle que en este caso, solo queremos que tenga strings dentro del array.
+
+// textStorage.addItem(30) //Esto va a dar error, porque le dijimos que soo queriamos strings.
+textStorage.addItem('Martin') 
