@@ -23,3 +23,27 @@ function merge<T extends object, U extends object>(objA: T, objB: U) { //lo que 
 
 const mergedObj = merge({name: 'pepe', hobbies: ['Sports']}, {age: 30})
 console.log(mergedObj.name);
+
+
+
+
+
+interface Lengthy {
+    length: number;
+}
+
+function countAndDescribe<T extends Lengthy>(element:T): [T, string]{ //Creamos una interface con la propiedad length, y la extendemos a T, para que typescript entienda que podemos usar la propiedad length en los elements, que son de type T. 
+    let descriptionText = 'Got no value.'
+    if(element.length === 1){
+        descriptionText = 'Got 1 element.'
+    } else if (element.length > 1){
+        descriptionText = 'Got ' + element.length + ' elements.';
+    }
+    return [element, descriptionText]
+}
+
+console.log(countAndDescribe('Hi there!'));
+console.log(countAndDescribe(['hola', 'Cra']));
+// console.log(countAndDescribe(30)); //* Esto no va a funcionar porque no se le puede hacer length a number.
+
+
