@@ -36,7 +36,7 @@ class ProjectInput {
         this.attach();
     }
 
-    @autobind
+    @autobind //hace falta que le agreguemos este decorator, porque sino el 'this' va a hacer referencia a otra cosa diferente a la clase, y nosotros necesitamos que haga referencia a la clase.
     private submitHandler(event: Event) {
         event.preventDefault();
         console.log(this.titleInputElement.value);
